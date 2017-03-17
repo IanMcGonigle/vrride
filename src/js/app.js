@@ -22,24 +22,22 @@ class VRScene extends React.Component {
   constructor(props) {
     super(props);
     this.state = {color: 'red'};
+    this.assetPath = 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/';
+    this.rocketObj = "https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj";
+    this.rocketMtl = "https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl";
 
-    // this.skyImg = require('../images/bg-vr.jpg');
-
-    // this.rocketObj = require('../models/rocket.obj');
-    // this.rocketMtl = require('../models/rocket.obj.mtl');
-
-    // this.loraxtObj = require('../models/Lorax_Home.obj');
-    // this.loraxMtl = require('../models/Lorax_Home.obj.mtl');
-
-    // console.log('lorax ', this.lorax);
+    this.spindle = <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>;
   }
 
   render () {
     return (
       <Scene>
         <a-assets>
-
-          <a-animation attribute="rotation"dur="2000" ease="linear" to="30 360 0" loop="true" repeat="indefinite" />
+          <img id="ground" src="url(https://previews.123rf.com/images/thesupe87/thesupe871011/thesupe87101100033/8204616-Steel-diamond-plate-pattern-You-can-tile-this-seamlessly-as-a-pattern-to-fit-whatever-size-you-need--Stock-Photo.jpg)" />
+          <a-mixin id="updown" attribute="rotation" dur="2000" direction="alternate" ease="linear" to="0 0 20" from="0 0 -20" repeat="indefinite" />
+          <a-mixin id="rocket-right" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5" />
+          <a-mixin id="rocket-left" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5" />
+          <a-mixin id="rspindle" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5" />
         </a-assets>
 
         <a-plane color="#ffe100" height="20000" width="20000" rotation="-90 0 0"></a-plane>
@@ -48,42 +46,42 @@ class VRScene extends React.Component {
 
 
         <Entity position="0 1.5 0">
-          <a-animation attribute="rotation" dur="10000" ease="ease-in-out" to="0 1800 0"repeat="indefinite" />
+          <a-animation attribute="rotation" dur="100000" ease="ease-in-out" to="0 2800 0"repeat="indefinite" />
 
           <Entity>
             <Entity>
-            <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <Camera position="1.58 .3 " rotation="0 90 0" fov="180"/>
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
-            <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
+            <a-animation mixin="updown" />
+            <Camera position="1.58 .35 -0.2" rotation="0 45 0" fov="180"/>
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-right"/>
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-left"/>
+            { this.spindle }
             </Entity>
           </Entity>
 
           <Entity rotation="0 270 0">
             <Entity>
-            <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
-            <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
+            <a-animation mixin="updown" />
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-right"/>
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-left"/>
+            { this.spindle }
             </Entity>
           </Entity>
 
           <Entity rotation="0 45 0">
             <Entity>
-            <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
-            <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
+            <a-animation mixin="updown" />
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-right"/>
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-left"/>
+            { this.spindle }
             </Entity>
           </Entity>
 
           <Entity rotation="0 135 0">
             <Entity>
-            <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
-            <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
+            <a-animation mixin="updown" />
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-right"/>
+            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} mixin="rocket-left"/>
+            { this.spindle }
             </Entity>
           </Entity>
 
