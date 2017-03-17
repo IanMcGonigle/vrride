@@ -113,16 +113,11 @@
 	    var _this = _possibleConstructorReturn(this, (VRScene.__proto__ || Object.getPrototypeOf(VRScene)).call(this, props));
 
 	    _this.state = { color: 'red' };
+	    _this.assetPath = 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/';
+	    _this.rocketObj = "https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj";
+	    _this.rocketMtl = "https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl";
 
-	    // this.skyImg = require('../images/bg-vr.jpg');
-
-	    // this.rocketObj = require('../models/rocket.obj');
-	    // this.rocketMtl = require('../models/rocket.obj.mtl');
-
-	    // this.loraxtObj = require('../models/Lorax_Home.obj');
-	    // this.loraxMtl = require('../models/Lorax_Home.obj.mtl');
-
-	    // console.log('lorax ', this.lorax);
+	    _this.spindle = _react2.default.createElement('a-cylinder', { color: 'grey', height: '3', radius: '0.03', rotation: '90 90 0' });
 	    return _this;
 	  }
 
@@ -135,25 +130,29 @@
 	        _react2.default.createElement(
 	          'a-assets',
 	          null,
-	          _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '2000', ease: 'linear', to: '30 360 0', loop: 'true', repeat: 'indefinite' })
+	          _react2.default.createElement('img', { id: 'ground', src: 'url(https://previews.123rf.com/images/thesupe87/thesupe871011/thesupe87101100033/8204616-Steel-diamond-plate-pattern-You-can-tile-this-seamlessly-as-a-pattern-to-fit-whatever-size-you-need--Stock-Photo.jpg)' }),
+	          _react2.default.createElement('a-mixin', { id: 'updown', attribute: 'rotation', dur: '2000', direction: 'alternate', ease: 'linear', to: '0 0 20', from: '0 0 -20', repeat: 'indefinite' }),
+	          _react2.default.createElement('a-mixin', { id: 'rocket-right', scale: '0.01 0.01 0.01', rotation: '-21.20 180 89.95', position: '1.4 -.35 0.5' }),
+	          _react2.default.createElement('a-mixin', { id: 'rocket-left', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' }),
+	          _react2.default.createElement('a-mixin', { id: 'rspindle', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' })
 	        ),
 	        _react2.default.createElement('a-plane', { color: '#ffe100', height: '20000', width: '20000', rotation: '-90 0 0' }),
 	        _react2.default.createElement('a-obj-model', { id: 'lorax', src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/Lorax_Home.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/Lorax_Home.obj.mtl', scale: '0.02 0.02 0.02', rotation: '-90 0 0 ', position: '0 0 .5' }),
 	        _react2.default.createElement(
 	          _aframeReact.Entity,
 	          { position: '0 1.5 0' },
-	          _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '10000', ease: 'ease-in-out', to: '0 1800 0', repeat: 'indefinite' }),
+	          _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '100000', ease: 'ease-in-out', to: '0 2800 0', repeat: 'indefinite' }),
 	          _react2.default.createElement(
 	            _aframeReact.Entity,
 	            null,
 	            _react2.default.createElement(
 	              _aframeReact.Entity,
 	              null,
-	              _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '1000', direction: 'alternate', ease: 'linear', to: '0 0 35', from: '0 0 -35', repeat: 'indefinite' }),
-	              _react2.default.createElement(_Camera2.default, { position: '1.58 .3 ', rotation: '0 90 0', fov: '180' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 180 89.95', position: '1.4 -.35 0.5' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' }),
-	              _react2.default.createElement('a-cylinder', { color: 'grey', height: '3', radius: '0.03', rotation: '90 90 0' })
+	              _react2.default.createElement('a-animation', { mixin: 'updown' }),
+	              _react2.default.createElement(_Camera2.default, { position: '1.58 .35 -0.2', rotation: '0 45 0', fov: '180' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-right' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-left' }),
+	              this.spindle
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -162,10 +161,10 @@
 	            _react2.default.createElement(
 	              _aframeReact.Entity,
 	              null,
-	              _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '1000', direction: 'alternate', ease: 'linear', to: '0 0 35', from: '0 0 -35', repeat: 'indefinite' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 180 89.95', position: '1.4 -.35 0.5' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' }),
-	              _react2.default.createElement('a-cylinder', { color: 'grey', height: '3', radius: '0.03', rotation: '90 90 0' })
+	              _react2.default.createElement('a-animation', { mixin: 'updown' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-right' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-left' }),
+	              this.spindle
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -174,10 +173,10 @@
 	            _react2.default.createElement(
 	              _aframeReact.Entity,
 	              null,
-	              _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '1000', direction: 'alternate', ease: 'linear', to: '0 0 35', from: '0 0 -35', repeat: 'indefinite' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 180 89.95', position: '1.4 -.35 0.5' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' }),
-	              _react2.default.createElement('a-cylinder', { color: 'grey', height: '3', radius: '0.03', rotation: '90 90 0' })
+	              _react2.default.createElement('a-animation', { mixin: 'updown' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-right' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-left' }),
+	              this.spindle
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -186,10 +185,10 @@
 	            _react2.default.createElement(
 	              _aframeReact.Entity,
 	              null,
-	              _react2.default.createElement('a-animation', { attribute: 'rotation', dur: '1000', direction: 'alternate', ease: 'linear', to: '0 0 35', from: '0 0 -35', repeat: 'indefinite' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 180 89.95', position: '1.4 -.35 0.5' }),
-	              _react2.default.createElement('a-obj-model', { src: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj', mtl: 'https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl', scale: '0.01 0.01 0.01', rotation: '-21.20 0 89.95', position: '-1.4 -.35 -0.5' }),
-	              _react2.default.createElement('a-cylinder', { color: 'grey', height: '3', radius: '0.03', rotation: '90 90 0' })
+	              _react2.default.createElement('a-animation', { mixin: 'updown' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-right' }),
+	              _react2.default.createElement('a-obj-model', { src: this.rocketObj, mtl: this.rocketMtl, mixin: 'rocket-left' }),
+	              this.spindle
 	            )
 	          )
 	        ),
