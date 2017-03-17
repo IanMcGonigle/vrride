@@ -13,7 +13,9 @@ import Sky from './components/Sky';
 import Model from './components/Model';
 
 
-
+// vrride/src/images/bg-vr.jpg
+// vrride/src/images/bg-vr.jpg
+// <Sky src={ `url(${this.skyImg})`}/>
 // https://www.flickr.com/groups/equirectangular/
 
 class VRScene extends React.Component {
@@ -21,15 +23,15 @@ class VRScene extends React.Component {
     super(props);
     this.state = {color: 'red'};
 
-    this.skyImg = require('../images/bg-vr.jpg');
+    // this.skyImg = require('../images/bg-vr.jpg');
 
-    this.rocketObj = require('../models/rocket.obj');
-    this.rocketMtl = require('../models/rocket.obj.mtl');
+    // this.rocketObj = require('../models/rocket.obj');
+    // this.rocketMtl = require('../models/rocket.obj.mtl');
 
-    this.loraxtObj = require('../models/Lorax_Home.obj');
-    this.loraxMtl = require('../models/Lorax_Home.obj.mtl');
+    // this.loraxtObj = require('../models/Lorax_Home.obj');
+    // this.loraxMtl = require('../models/Lorax_Home.obj.mtl');
 
-    console.log('lorax ', this.lorax);
+    // console.log('lorax ', this.lorax);
   }
 
   render () {
@@ -42,7 +44,7 @@ class VRScene extends React.Component {
 
         <a-plane color="#ffe100" height="20000" width="20000" rotation="-90 0 0"></a-plane>
 
-        <a-obj-model id="lorax" src={this.loraxtObj} mtl={this.loraxMtl} scale="0.03 0.02 0.03" rotation="-90 0 0 " position="0 0 .5"/>
+        <a-obj-model id="lorax" src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/Lorax_Home.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/Lorax_Home.obj.mtl" scale="0.02 0.02 0.02" rotation="-90 0 0 " position="0 0 .5"/>
 
 
         <Entity position="0 1.5 0">
@@ -51,9 +53,9 @@ class VRScene extends React.Component {
           <Entity>
             <Entity>
             <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <Camera position="1.58 .3 " rotation="0 90 0"/>
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
+            <Camera position="1.58 .3 " rotation="0 90 0" fov="180"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
             <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
             </Entity>
           </Entity>
@@ -61,8 +63,8 @@ class VRScene extends React.Component {
           <Entity rotation="0 270 0">
             <Entity>
             <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
             <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
             </Entity>
           </Entity>
@@ -70,8 +72,8 @@ class VRScene extends React.Component {
           <Entity rotation="0 45 0">
             <Entity>
             <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
             <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
             </Entity>
           </Entity>
@@ -79,8 +81,8 @@ class VRScene extends React.Component {
           <Entity rotation="0 135 0">
             <Entity>
             <a-animation attribute="rotation" dur="1000" direction="alternate" ease="linear" to="0 0 35" from="0 0 -35" repeat="indefinite" />
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
-            <a-obj-model src={this.rocketObj} mtl={this.rocketMtl} scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 180 89.95" position="1.4 -.35 0.5"/>
+            <a-obj-model src="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj" mtl="https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/models/rocket.obj.mtl" scale="0.01 0.01 0.01" rotation="-21.20 0 89.95" position="-1.4 -.35 -0.5"/>
             <a-cylinder color="grey" height="3" radius="0.03" rotation="90 90 0"></a-cylinder>
             </Entity>
           </Entity>
@@ -89,7 +91,8 @@ class VRScene extends React.Component {
 
 
 
-        <Sky src={ `url(${this.skyImg})`}/>
+
+        <Sky src="url(https://raw.githubusercontent.com/ianMcHuge/vrride/master/src/images/bg-vr.jpg)"/>
 
 
 
